@@ -1,14 +1,12 @@
+var meta = require('./package.json');
+
 var request = require('request');
+var Q = require('q');
+
 var endpoint = 'https://api.ef.gy/fortune';
 
 function cookie(opt_id) {
-  var self = this;
-
-  this.id = opt_id;
-  this.success = function(cookie) {
-    console.log(cookie.cookie);
-  };
-  this.error = console.warn;
+  var deferred = Q.defer();
 
   var target = endpoint;
   if (typeof(opt_id) === 'number') {
@@ -19,16 +17,18 @@ function cookie(opt_id) {
     uri: target,
     headers: {
       'Accept': 'text/json',
-      'User-Agent': 'fortuned-api-client',
+      'User-Agent': 'fortuned-api-client/' + meta.version,
     },
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var result = JSON.parse(body);
-      self.success(result);
+      deferred.resolve(result);
     } else {
-      self.error(error);
+      deferred.reject(error);
     }
   });
+
+  return deferred.promise;
 }
 
 module.exports = {

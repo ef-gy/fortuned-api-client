@@ -1,6 +1,6 @@
 {
   "name": "fortuned-api-client",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "fortuned-api-client.js",
   "description": "fortuned API client",
   "keywords": [
@@ -20,8 +20,13 @@
     "url": "https://github.com/ef-gy/fortuned-api-client"
   },
   "dependencies": {
-    "request": "~2.81.0"
+    "request": "~2.81.0",
+    "q": "~1.5.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "directories": {
+    "lib": ".",
+    "bin": "bin"
+  }
 }
 
