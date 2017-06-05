@@ -1,5 +1,7 @@
 # node.js fortuned API client
 
+[![npm version](https://badge.fury.io/js/fortuned-api-client.svg)](https://badge.fury.io/js/fortuned-api-client)
+
 This is an API client for the `fortuned` fortune cookie API. The API, as
 described at https://github.com/ef-gy/fortuned, is quite straightforward and
 allows retrieval of fortune cookies, either at random or by providing the ID of
@@ -13,6 +15,9 @@ After you've done the usual setup for this node.js module, try this:
       then(function(cookie) {
         process.stdout.write(cookie.cookie);
       }, console.warn);
+
+Runkit link for something equivalent to play with:
+https://runkit.com/59355a35962215001232782e/59357464551d0a0012fe557b
 
 ## CLI client
 
