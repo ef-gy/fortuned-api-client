@@ -1,0 +1,27 @@
+{
+  "name": "fortuned-api-client",
+  "version": "0.1.0",
+  "main": "fortuned-api-client.js",
+  "description": "fortuned API client",
+  "keywords": [
+    "fortune",
+    "fortune-cookie",
+    "cookie",
+    "api",
+    "client"
+  ],
+  "author": {
+    "name": "Magnus Deininger",
+    "email": "magnus@ef.gy",
+    "url": "https://ef.gy/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ef-gy/fortuned-api-client"
+  },
+  "dependencies": {
+    "request": "~2.81.0"
+  },
+  "license": "MIT"
+}
+
