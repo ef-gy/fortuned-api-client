@@ -18,7 +18,7 @@ After you've done the usual setup for this node.js module, try this:
       }, console.warn);
 
 Runkit link for something equivalent to play with:
-https://runkit.com/59355a35962215001232782e/59357464551d0a0012fe557b
+https://runkit.com/jyujin/runkit-npm-fortuned-api-client/2.0.1
 
 ## CLI client
 
