@@ -1,7 +1,7 @@
 {
   "name": "fortuned-api-client",
-  "version": "0.3.0",
-  "main": "fortuned-api-client.js",
+  "version": "0.4.0",
+  "main": "index.js",
   "description": "fortuned API client",
   "keywords": [
     "fortune",
@@ -26,8 +26,11 @@
   },
   "license": "MIT",
   "directories": {
-    "lib": ".",
+    "lib": "lib",
     "bin": "bin"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-google": "^0.8.0"
   }
 }
-

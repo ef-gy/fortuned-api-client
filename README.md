@@ -11,8 +11,9 @@ such a cookie.
 
 After you've done the usual setup for this node.js module, try this:
 
-    require('fortuned-api-client').cookie().
-      then(function(cookie) {
+    const cookie = require('fortuned-api-client');
+    const api = new cookie.Api();
+    api.fortune().then(function(cookie) {
         process.stdout.write(cookie.cookie);
       }, console.warn);
 
