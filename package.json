@@ -1,6 +1,6 @@
 {
   "name": "fortuned-api-client",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "main": "index.js",
   "description": "fortuned API client",
   "keywords": [
@@ -32,5 +32,8 @@
   "devDependencies": {
     "eslint": "^3.19.0",
     "eslint-config-google": "^0.8.0"
+  },
+  "engines" : {
+    "node" : ">=6.4.0"
   }
 }
