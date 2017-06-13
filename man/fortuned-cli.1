@@ -1,0 +1,71 @@
+.TH fortuned-cli 1 "JUNE 2017" fortuned-cli "User Manuals"
+.SH NAME
+fortuned-cli \- query fortune cookies from central server
+.SH SYNOPSIS
+.B fortuned-cli [--id
+.I cookie-id
+.B ] [
+.I options
+.B ... ]
+.SH DESCRIPTION
+.B fortuned-cli
+is a programme that queries a
+.B fortuned
+server for a (hopefully) funny adage. It's basically the local counterpart of
+the
+.B fortune
+programme, which you may or may not have installed on your system.
+.SH OPTIONS
+This programme will eventually support a superset of the options of the regular
+.B fortune
+programme, but for now there's the following:
+.IP "-o, --offensive"
+Pick from the list of offensive cookies, instead of the non-offensive ones. This
+depends on the source filename, so may not be entirely accurate.
+
+Also, don't get your panties in a bunch if you don't like what you see; instead,
+stop using this flag. I didn't curate the source files, so it's not my fault
+that some of the contents are messed up.
+.IP "-c, --file"
+Show the source file that a cookie came from. This is the full path name on the
+remote host, unlike the
+.B fortune
+programme, which only prints the file name without the path component.
+.IP "--endpoint"
+Pick an API endpoint for where to get the cookie from. The default is at
+.B "https://api.ef.gy"
+which hosts the full set of fortune cookies found in the default Debian install.
+You can run your own server, as long as it follows the same API. Look up the
+original
+.B fortuned
+docs, and ideally go and set up that server:
+.B "https://github.com/ef-gy/fortuned/blob/master/README.md"
+
+For extra privacy, you can set this to
+.B "http://664ov6iyvgpe63xn.onion"
+which points to the same server but through Tor. This requires your system to be
+set up to allow use of Tor from arbitrary command line programmes.
+.IP "--id ID"
+Query a specific fortune cookie.
+.IP "--show"
+Show the cookie ID of whatever cookie was retrieved. This is so you can recall
+the cookie later with the
+.B --id
+option.
+.IP "--source"
+Show the full path name of the cookie, as well as the sequence number of the
+cookie in that file. The
+.B fortuned
+API gives us this information for no particular reason.
+.IP "-h, --help"
+Show help screen and exit.
+.IP "-v, --version"
+Show version information and exit.
+.SH EXAMPLES
+To get a simple fortune cookie, just run the command without options:
+.IP "fortuned-cli"
+.SH FILES
+You do not need to have local fortune cookie files installed - in fact, it won't
+help you in any way since this just queries a remote API for cookies.
+.SH AUTHORS
+Magnus Deininger <magnus@ef.gy>
