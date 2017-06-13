@@ -19,6 +19,17 @@ programme, which you may or may not have installed on your system.
 This programme will eventually support a superset of the options of the regular
 .B fortune
 programme, but for now there's the following:
+.IP "-a, --any"
+Pick from the full list of cookies, offensive or otherwise.
+
+Please do mind the notes for the
+.B --offensive
+option below.
+.IP "-c, --file"
+Show the source file that a cookie came from. This is the full path name on the
+remote host, unlike the
+.B fortune
+programme, which only prints the file name without the path component.
 .IP "-o, --offensive"
 Pick from the list of offensive cookies, instead of the non-offensive ones. This
 depends on the source filename, so may not be entirely accurate.
@@ -26,11 +37,6 @@ depends on the source filename, so may not be entirely accurate.
 Also, don't get your panties in a bunch if you don't like what you see; instead,
 stop using this flag. I didn't curate the source files, so it's not my fault
 that some of the contents are messed up.
-.IP "-c, --file"
-Show the source file that a cookie came from. This is the full path name on the
-remote host, unlike the
-.B fortune
-programme, which only prints the file name without the path component.
 .IP "--endpoint"
 Pick an API endpoint for where to get the cookie from. The default is at
 .B "https://api.ef.gy"

@@ -8,8 +8,9 @@ const meta = require('../package.json');
 
 commander
   .version(meta.version)
-  .option('-o, --offensive', 'show a (potentially) offensive cookie')
+  .option('-a, --any', 'allow any sort of cookie, offensive or not')
   .option('-c, --file', 'show the source file that the cookie came from')
+  .option('-o, --offensive', 'show a (potentially) offensive cookie')
   .option('--endpoint [address]',
           'select the API endpoint [https://api.ef.gy]',
           'https://api.ef.gy')
@@ -33,33 +34,19 @@ function withCookie(data) {
   let co = new cookie.Cookie(data);
   let offensive = commander.offensive || false;
 
-  if (co.isOffensive() != offensive) {
-    if (retries < 50) {
-      retries++;
-      api.fortune(commander.id).then(withCookie, console.warn);
-    } else {
-      console.warn('Sorry, I couldn\'t find what you are looking for.');
+  if (!commander.any) {
+    if (co.isOffensive() != offensive) {
+      if (retries < 50) {
+        retries++;
+        api.fortune(commander.id).then(withCookie, console.warn);
+      } else {
+        console.warn('Sorry, I couldn\'t find what you are looking for.');
+      }
+      return;
     }
-    return;
   }
 
-  if (commander.file) {
-    console.log('(%s)\n%%', co.file);
-  }
-
-  const extraNewline = commander.source || commander.show;
-  if (extraNewline) {
-    console.log(co.cookie);
-  } else {
-    process.stdout.write(co.cookie);
-  }
-
-  if (commander.source) {
-    console.log('source file: %s#%d', co.file, co.fileID);
-  }
-  if (commander.show) {
-    console.log('cookie ID: %d', co.id);
-  }
+  console.log(co.toString(commander.file, commander.source, commander.show));
 }
 
 api.fortune(commander.id).then(withCookie, console.warn);
