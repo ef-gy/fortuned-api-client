@@ -28,7 +28,7 @@ This package comes with a simple CLI wrapper, which you can install like this:
 
 After doing so, you get this shiny new command:
 
-    fortuned-cli.js
+    fortuned-cli
 
 This will print a fortune cookie retrieved from the main API server.
 
