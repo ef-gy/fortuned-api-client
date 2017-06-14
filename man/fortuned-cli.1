@@ -16,9 +16,13 @@ the
 .B fortune
 programme, which you may or may not have installed on your system.
 .SH OPTIONS
-This programme will eventually support a superset of the options of the regular
+This programme supports all of the
 .B fortune
-programme, but for now there's the following:
+programme's command line arguments, except for the ones that have to scan over
+all cookies. It also supports a few arguments of its own, which mostly deal with
+how the programme talks to
+.B fortuned
+and such.
 .IP "-a, --any"
 Pick from the full list of cookies, offensive or otherwise.
 
@@ -30,6 +34,13 @@ Show the source file that a cookie came from. This is the full path name on the
 remote host, unlike the
 .B fortune
 programme, which only prints the file name without the path component.
+.IP "-l, --long"
+Only show long cookies. See the
+.B --length
+option for what is considered long.
+.IP "-n, --length <n>"
+This defines how long a "short" cookie can be, in characters. The trailing
+newline doesn't count as part of the cookie. Defaults to 160.
 .IP "-o, --offensive"
 Pick from the list of offensive cookies, instead of the non-offensive ones. This
 depends on the source filename, so may not be entirely accurate.
@@ -37,7 +48,14 @@ depends on the source filename, so may not be entirely accurate.
 Also, don't get your panties in a bunch if you don't like what you see; instead,
 stop using this flag. I didn't curate the source files, so it's not my fault
 that some of the contents are messed up.
-.IP "--endpoint"
+.IP "-s, --short"
+Only show a short cookie. See the
+.B --length
+option for what is considered short.
+.IP "-w, --wait"
+Wait a while, based on how long the cookie is. Useful for having this in your
+logout script.
+.IP "--endpoint <address>"
 Pick an API endpoint for where to get the cookie from. The default is at
 .B "https://api.ef.gy"
 which hosts the full set of fortune cookies found in the default Debian install.
@@ -53,6 +71,9 @@ which points to the same server but through Tor. This requires your system to be
 set up to allow use of Tor from arbitrary command line programmes.
 .IP "--id ID"
 Query a specific fortune cookie.
+.IP "--retries <n>"
+How often to retry fetching a cookie if the conditions on length and
+offensiveness weren't met. The default is 50 times.
 .IP "--show"
 Show the cookie ID of whatever cookie was retrieved. This is so you can recall
 the cookie later with the
@@ -73,5 +94,9 @@ To get a simple fortune cookie, just run the command without options:
 .SH FILES
 You do not need to have local fortune cookie files installed - in fact, it won't
 help you in any way since this just queries a remote API for cookies.
+.SH "FORTUNED API DOCS"
+If you're curious about writing your own fortune programe, have a look at
+.B "https://github.com/ef-gy/fortuned/blob/master/README.md"
+which explains all the details of the service.
 .SH AUTHORS
 Magnus Deininger <magnus@ef.gy>
